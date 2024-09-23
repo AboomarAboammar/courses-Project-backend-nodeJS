@@ -9,7 +9,10 @@ const mongoose = require("mongoose");
 
 const url = process.env.MONGO_URL;
 //npm install --save multer  for uploads file and form data
-mongoose.connect(url).then(() => {
+mongoose.connect(url, {
+  useNewUrlParser: true,
+  useUnifiedTopology: true,
+  serverSelectionTimeoutMS: 20000}).then(() => {
   console.log("connected to mongoose");
 });
 app.use(cors());
